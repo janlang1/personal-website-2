@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>John Kang</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="../static/js/singlePageScrollNav.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <nav>
+        <a href="#page-zero">Home</a>
+        <a href="#page-one">About Me</a>
+        <a href="#page-two">Projects</a>
+        <!-- <a href="#page-three">NFT</a> -->
+        <a href="#page-three">Contact</a> 
+        <span class = "pull-right">
+            <a href="/">Login</a> 
+        </span>
+    </nav>
+
+    <!-- body -->
+    <div class="container">
+        <div id="page-zero" class="section-container">
+            <img id="pfp" src="../static/images/headshot.jpg">
+            <!-- socials -->
+            <div id = "socials">
+                <a href="https://github.com/johnkang54">Github</a> 
+                <a href="https://www.linkedin.com/in/johnzkang/">Linkedin</a> 
+                <a href="https://drive.google.com/file/d/1VjgPzLefFc9y4kuWVlZGJUpBoZ6z-Sg6/view?usp=sharing">Resume</a>
+            </div>
+        </div>
+
+        <!-- add form tag here and bounce ideas in different colors off the walls -->
+
+        <!-- about -->
+        <div id="page-one" class="section-container">
+            <h1>About Me</h1>
+            <p>Name: John Kang</p>
+            <p>Age: 23</p>
+            <p>Location: Los Angeles / Dallas</p>
+            <p>Education: University of Southern California 2020</p>
+            <p>Interest: Tech, Crypto, Gym, Food</p>
+            <p>Skills: Python (flask, pandas, pyspark) | Java (JSP, Servlet), C++ (data structures) </p>
+
+            {{ current_user }}
+        </div>
+
+        <!-- projects -->
+        <div id="page-two" class="section-container">
+            <h1>Projects</h1>
+            <p>project 1</p>
+            <p>project 2</p>
+        </div>
+
+        <!-- contact -->
+        <div id="page-three" class="section-container">
+            <h1> Contact Me</h1>
+            <p>Email: johnkang03@gmail.com</p>
+            <p>Socials: IG johnzkang TW johnkang01</p>
+        </div>
+
+    </div>
+    <!-- footer -->
+    <footer>
+        Copyright &copy;2022. John Kang.
+    </footer>
+
+</body>
+</html>
