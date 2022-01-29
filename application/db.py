@@ -4,7 +4,7 @@ from flask_pymongo import pymongo
 from bson.json_util import dumps
 import ssl
 import certifi
-from secret import PASSWORD
+#from secret import PASSWORD
 
 
 CONNECTION_STRING = "mongodb+srv://johnkang54:"+PASSWORD+"@cluster0.dmkth.mongodb.net/flask_personal_website?retryWrites=true&w=majority"
