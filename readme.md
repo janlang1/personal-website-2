@@ -24,3 +24,7 @@ ALSO CANNOT BE ON WORK VPN
 {% function %}
 {{ expression }}
 {# comment #}
+
+# git version control
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
