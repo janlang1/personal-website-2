@@ -15,8 +15,10 @@ from application import db
 @app.route("/index")
 @app.route("/home")
 def index():
-    one_user = db.db.biography.find_one()
-    return render_template("index.html", index = True, current_user = one_user)
+    one_user = db.db.biography.find_one({"email": "johnkang03@gmail.com"})
+    list_of_projects = one_user['projects'].split(',')
+    return render_template("index.html", index = True, current_user = one_user,list_of_projects=list_of_projects)
+
 
 #test to insert data to the data base
 @app.route("/test")

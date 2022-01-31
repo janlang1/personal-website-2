@@ -28,9 +28,12 @@
             <img id="pfp" src="../static/images/headshot.jpg">
             <!-- socials -->
             <div id = "socials">
-                <a href="https://github.com/johnkang54">Github</a> 
-                <a href="https://www.linkedin.com/in/johnzkang/">Linkedin</a> 
-                <a href="https://drive.google.com/file/d/1VjgPzLefFc9y4kuWVlZGJUpBoZ6z-Sg6/view?usp=sharing">Resume</a>
+                <img class="icon" src="../static/images/githubdoodleicon.png" alt="">
+                <a class="iconlink" href="https://github.com/johnkang54">Github</a> 
+                <img class="icon" src="../static/images/linkedin-logo-square2-webtreatsetc-300x300.png">
+                <a class="iconlink" href="https://www.linkedin.com/in/johnzkang/">Linkedin</a> 
+                <img class="icon" src="../static/images/resumeicon.png">
+                <a class="iconlink" href="https://drive.google.com/file/d/1VjgPzLefFc9y4kuWVlZGJUpBoZ6z-Sg6/view?usp=sharing">Resume</a>
             </div>
         </div>
 
@@ -38,29 +41,33 @@
 
         <!-- about -->
         <div id="page-one" class="section-container">
+            <hr>
             <h1>About Me</h1>
-            <p>Name: John Kang</p>
-            <p>Age: 23</p>
-            <p>Location: Los Angeles / Dallas</p>
-            <p>Education: University of Southern California 2020</p>
-            <p>Interest: Tech, Crypto, Gym, Food</p>
-            <p>Skills: Python (flask, pandas, pyspark) | Java (JSP, Servlet), C++ (data structures) </p>
-
-            {{ current_user }}
+            <p>Name: {{current_user.name}}</p>
+            <p>Age: {{current_user.age}}</p>
+            <p>Location: {{current_user.location}}</p>
+            <p>Education: {{current_user.education}}</p>
+            <p>Interests: {{current_user.interests}}</p>
+            <p>Skills: {{current_user.skills}} </p>
+            <img class="sectionimg" src="../static/images/aboutmesmile.png">
         </div>
 
         <!-- projects -->
         <div id="page-two" class="section-container">
+            <hr>
             <h1>Projects</h1>
-            <p>project 1</p>
-            <p>project 2</p>
+            {% for p in list_of_projects %}
+                <p>{{p}}</p>
+            {%endfor%}
+            <img class="sectionimg" src="../static/images/rocket.png">
         </div>
 
         <!-- contact -->
         <div id="page-three" class="section-container">
+            <hr>
             <h1> Contact Me</h1>
-            <p>Email: johnkang03@gmail.com</p>
-            <p>Socials: IG johnzkang TW johnkang01</p>
+            <p>Email: {{current_user.email}} </p>
+            <img class="sectionimg" src="../static/images/contactdoodle.png">
         </div>
 
     </div>

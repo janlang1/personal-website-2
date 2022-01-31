@@ -1,3 +1,6 @@
 secret.py
 .DS_Store
 __pycache__/
+server.csr
+server.key
+server.pass.key
