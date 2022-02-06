@@ -1,4 +1,3 @@
-#from turtle import title
 from flask.helpers import url_for
 from application import app,db,mail
 from flask import render_template, request,Response, json, redirect, flash, url_for, session

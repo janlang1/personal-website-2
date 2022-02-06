@@ -65,7 +65,7 @@
         <div id="page-three" class="section-container">
             <hr>
             <h1> Contact Me</h1>
-            <p>Email: {{current_user.email}} </p>
+            <p>Email:<a href = "mailto:{{current_user.email}}">johnkang03@gmail.com</a> </p>
             <form name="{{url_for('email')}}" action="{{url_for('email')}}" method="post" novalidate>
                 <fieldset class = "form-group";>
                     {{form.hidden_tag()}}
