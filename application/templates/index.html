@@ -66,6 +66,28 @@
             <hr>
             <h1> Contact Me</h1>
             <p>Email: {{current_user.email}} </p>
+            <form name="{{url_for('email')}}" action="{{url_for('email')}}" method="post" novalidate>
+                <fieldset class = "form-group";>
+                    {{form.hidden_tag()}}
+                    <p>
+                        {{form.contacter.label}} <br>
+                        {{form.contacter}}
+                        {%for error in form.contacter.errors%}
+                            <span class="error-message">{{error}}</span>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.message.label}} <br>
+                        {{form.message}}
+                        {%for error in form.message.errors%}
+                            <span class="error-message">{{error}}</span>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.submit()}}
+                    </p>
+                </fieldset>
+            </form>
             <img class="sectionimg" src="../static/images/contactdoodle.png">
         </div>
 

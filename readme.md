@@ -59,3 +59,6 @@ because you can enable ACM for ssl certs
 
 # edit biography
 1. can pre populate data with form.<field>.data = var or you can do it in the html with {%set var = var%} and {{form.<field>(value = var)}}
+
+smtplib.SMTPSenderRefused
+smtplib.SMTPSenderRefused: (530, b'5.7.0 Authentication Required. Learn more at\n5.7.0  https://support.google.com/mail/?p=WantAuthError k6sm2491739oop.28 - gsmtp', 'johnkang03@gmail.com')

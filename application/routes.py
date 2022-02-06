@@ -1,9 +1,10 @@
 from turtle import title
 from flask.helpers import url_for
-from application import app,db
+from application import app,db,mail
 from flask import render_template, request,Response, json, redirect, flash, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from application.forms import LoginForm, RegisterForm, IndexEditForm, ProjectAddFrom
+from application.forms import LoginForm, RegisterForm, IndexEditForm, ProjectAddForm,EmailForm
+from flask_mail import Message
 
 #for mongo atlas
 from flask_pymongo import pymongo
@@ -12,9 +13,10 @@ from flask_pymongo import pymongo
 @app.route("/index")
 @app.route("/home")
 def index():
+    form = EmailForm()
     one_user = db.db.biography.find_one({"email": "johnkang03@gmail.com"})
     list_of_projects = list(db.db.projects.find({"user":"johnkang03@gmail.com"}))
-    return render_template("index.html", current_user = one_user,list_of_projects=list_of_projects)
+    return render_template("index.html", current_user = one_user,list_of_projects=list_of_projects, form = form)
 
 @app.route("/register",  methods=['GET', 'POST'])
 def register():
@@ -62,7 +64,7 @@ def logout():
 @app.route("/index/edit", methods=['GET', 'POST'])
 def index_edit():
     if session.get('email') != 'johnkang03@gmail.com':
-        flash("You are not the owner of this page!", "error")
+        flash("You are not the owner of this page!",category= "danger")
         redirect(url_for("index"))
     form = IndexEditForm()
     if form.validate_on_submit():
@@ -98,9 +100,9 @@ def index_edit():
 @app.route("/index/project_add", methods=['GET', 'POST'])
 def project_add():
     if session.get('email') != 'johnkang03@gmail.com':
-        flash("You are not the owner of this page!", "error")
+        flash("You are not the owner of this page!", category="danger")
         redirect(url_for("index"))
-    form = ProjectAddFrom()
+    form = ProjectAddForm()
     if form.validate_on_submit():
         #this is from the request, same as request.form.get('')
         user = form.user.data
@@ -127,16 +129,34 @@ def project_add():
 @app.route("/index/project_delete", methods=['GET', 'POST'])
 def project_delete():
     if session.get('email') != 'johnkang03@gmail.com':
-        flash("You are not the owner of this page!", "error")
+        flash("You are not the owner of this page!",category= "danger")
         redirect(url_for("index"))
     #could use request.args['index'] if using url_for arguments
     #to use /<int:id? can't use url_for on the html page
     if request.args['index']:
         db.db.projects.delete_one({'index': int(request.args['index'])})
-        flash("Project deleted!", "error")
+        flash("Project deleted!", category="danger")
     else: 
-        flash("No Project Index Found!", "error")
+        flash("No Project Index Found!", category="danger")
     return redirect("/index") #flash doesnt pesist if using url_for (not sure need to double check this claim)
+
+@app.route("/index/email", methods=['GET', 'POST'])
+def email():
+    print("i hit the email route")
+    form = EmailForm()
+    if form.validate_on_submit():
+        print("submitted email")
+        contacter = form.contacter.data
+        message = form.message.data
+        try:
+            msg = Message('email from johnkang.dev', sender = contacter, recipients = ['johnkang03@gmail.com'])
+            msg.body = message + ' ' + contacter
+            mail.send(msg)
+            print(contacter, message, msg)
+            return redirect("/index")
+        except:
+            flash("email did not work!",category= "danger")
+    return redirect("/index")
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support

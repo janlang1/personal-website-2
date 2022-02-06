@@ -34,7 +34,7 @@ class IndexEditForm(FlaskForm):
     skills = TextAreaField("Skills", validators=[DataRequired(),Length(min=2)])
     submit = SubmitField("Update")
 
-class ProjectAddFrom(FlaskForm):
+class ProjectAddForm(FlaskForm):
     user = StringField("User", default='johnkang03@gmail.com')
     title = StringField("Title", validators=[DataRequired(),Length(min=2)])
     description = StringField("Description", validators=[DataRequired(),Length(min=2)])
@@ -42,4 +42,9 @@ class ProjectAddFrom(FlaskForm):
     github_url = StringField("Github URL", validators=[DataRequired(),Length(min=2)])
     #index = IntegerField("Index", validators=[DataRequired(),Length(min=2)]) dont need this use .count() and +1 
     submit = SubmitField("Add")
+
+class EmailForm(FlaskForm):
+    contacter = StringField("My Email", validators=[DataRequired()])
+    message = TextAreaField("Message", validators=[DataRequired(),Length(min=2)])
+    submit = SubmitField("Send Email")
 

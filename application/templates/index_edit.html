@@ -20,42 +20,42 @@
                         
                         {{ form.name(value=name)}}
                         {%for error in form.name.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
                         {{form.age.label}} <br>
                         {{form.age(value = age)}}
                         {%for error in form.age.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
                         {{form.location.label}} <br>
                         {{form.location(value = location)}}
                         {%for error in form.location.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
                         {{form.education.label}} <br>
                         {{form.education(value = education)}}
                         {%for error in form.education.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
                         {{form.interests.label}} <br>
                         {{form.interests}}
                         {%for error in form.interests.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
                         {{form.skills.label}} <br>
                         {{form.skills}}
                         {%for error in form.skills.errors%}
-                            <spen class="error-message">{{error}}</spen>
+                            <span class="error-message">{{error}}</span>
                         {%endfor%}
                     </p>
                     <p>
