@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3></h3>
+        <form name="{{url_for('project_add')}}" action="" method="post" novalidate>
+            <fieldset class = "form-group" style="margin-top: 30%;";>
+                <legend>{{title}}</legend>
+                {{form.hidden_tag()}}
+                <p>
+                    {{form.title.label}} <br>
+                    {{ form.title}}
+                    {%for error in form.title.errors%}
+                        <spen class="error-message">{{error}}</spen>
+                    {%endfor%}
+                </p>
+                <p>
+                    {{form.description.label}} <br>
+                    {{form.description}}
+                    {%for error in form.description.errors%}
+                        <spen class="error-message">{{error}}</spen>
+                    {%endfor%}
+                </p>
+                <p>
+                    {{form.image_url.label}} <br>
+                    {{form.image_url}}
+                    {%for error in form.image_url.errors%}
+                        <spen class="error-message">{{error}}</spen>
+                    {%endfor%}
+                </p>
+                <p>
+                    {{form.github_url.label}} <br>
+                    {{form.github_url}}
+                    {%for error in form.github_url.errors%}
+                        <spen class="error-message">{{error}}</spen>
+                    {%endfor%}
+                </p>
+                <p>
+                    {{form.submit()}}
+                </p>
+                <p>
+                    <a class="btn btn-primary"href="{{ url_for('index') }}">Cancel</a>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

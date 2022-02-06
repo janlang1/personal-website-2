@@ -5,14 +5,15 @@ python3 -m venv /Users/jk4678/Documents/personal_website/venv
 
 # run virtual enviroment
 source venv/bin/activate
+I think I have to run this each time: $ export PASSWORD='password'
 
 # libraries to install
-pip install flask, flask-wtf, python-dotenv, Flask-Security 
+pip install flask, flask-wtf, python-dotenv
 - wtf for forms
 - dotenv for environment variables for the .flaskenv file
 
 # save package dependencies 
-pip freeze > requirements.txt
+'$ pip freeze > requirements.txt'
 to save package dependencies like the package.json in node.js
 reinstall using 'pip install -r requirements.txt'
 
@@ -52,3 +53,9 @@ because you can enable ACM for ssl certs
 8. wait a couple mins should get email confirmation from cloudflare that your website is 'secured'
 (both manual and automatic ssl from heroku needs paid dyno, cloudflare is free but only half secure)
 
+# Login / Register
+1. pip install Flask-Security 
+2. 
+
+# edit biography
+1. can pre populate data with form.<field>.data = var or you can do it in the html with {%set var = var%} and {{form.<field>(value = var)}}

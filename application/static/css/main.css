@@ -67,6 +67,31 @@ hr{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5%;
     width: 200px;
     height: 200px;
+    
+}
+
+.alert{
+    width: 50%;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    position: absolute;
+    margin-top: 10%;
+}
+
+.error-message{
+    color: red;
+}
+
+.card{
+    display: inline-block;
+    width: 14rem;
+}
+
+.card-img-top{
+    width: 150px;
+    height: 100px;
 }

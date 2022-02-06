@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>John Kang</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/main.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% extends "layout.html" %}
 
-    <script src="../static/js/singlePageScrollNav.js"></script>
-</head>
-<body>
-    <!-- header -->
-    <nav>
-        <a href="#page-zero">Home</a>
-        <a href="#page-one">About Me</a>
-        <a href="#page-two">Projects</a>
-        <!-- <a href="#page-three">NFT</a> -->
-        <a href="#page-three">Contact</a> 
-        <span class = "pull-right">
-            <a href="/">Login</a> 
-        </span>
-    </nav>
+{% block content %}
 
     <!-- body -->
     <div class="container">
@@ -49,6 +29,9 @@
             <p>Education: {{current_user.education}}</p>
             <p>Interests: {{current_user.interests}}</p>
             <p>Skills: {{current_user.skills}} </p>
+            {%if session['email'] == 'johnkang03@gmail.com' %}
+                <a class="btn btn-warning"href="{{url_for('index_edit')}}">Edit</a>
+            {%endif%}
             <img class="sectionimg" src="../static/images/aboutmesmile.png">
         </div>
 
@@ -57,8 +40,24 @@
             <hr>
             <h1>Projects</h1>
             {% for p in list_of_projects %}
-                <p>{{p}}</p>
+                <div class="card">
+                    <img class="card-img-top" src="{{p.image_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{p.title}}</h5>
+                        <p class="card-text">{{p.description}}</p>
+                        <a href="{{p.github_url}}" class="btn btn-primary">Github link</a>
+                        {%if session['email'] == 'johnkang03@gmail.com' %}
+                            <br>
+                            {% set index = p.index %}
+                            <a class="btn btn-danger"href="{{url_for('project_delete',index=index)}}">Delete</a>
+                        {%endif%}
+                    </div>
+                </div>
             {%endfor%}
+            {%if session['email'] == 'johnkang03@gmail.com' %}
+                <br>
+                <a class="btn btn-success"href="{{url_for('project_add')}}">Add</a>
+            {%endif%}
             <img class="sectionimg" src="../static/images/rocket.png">
         </div>
 
@@ -71,10 +70,4 @@
         </div>
 
     </div>
-    <!-- footer -->
-    <footer>
-        Copyright &copy;2022. John Kang.
-    </footer>
-
-</body>
-</html>
+{% endblock %}

@@ -4,9 +4,8 @@
 
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h3></h3>
             <form name="login" action="" method="post" novalidate>
-                <fieldset class = "form-group">
+                <fieldset class = "form-group" style="margin-top: 30%;";>
                     <legend>{{title}}</legend>
                     <!-- this form in this expression is from the route as a LoginForm() obj -->
                     {{form.hidden_tag()}}
@@ -28,8 +27,6 @@
                         {{form.submit()}}
                     </p>
                 </fieldset>
-                
-                
             </form>
         </div>
     </div>

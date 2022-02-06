@@ -1,0 +1,71 @@
+    {% extends "layout.html" %}
+   
+    {% block content %}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3></h3>
+            <form name="{{url_for('index_edit')}}" action="" method="post" novalidate>
+                <fieldset class = "form-group" style="margin-top: 30%;";>
+                    <legend>{{title}}</legend>
+                    {{form.hidden_tag()}}
+                    {% set name = current_user.name %}
+                    {% set age = current_user.age %}
+                    {% set location = current_user.location %}
+                    {% set education = current_user.education %}
+                    {% set interests = current_user.interests %}
+                    {% set skills = current_user.skills %}
+                    <p>
+                        {{form.name.label}} <br>
+                        
+                        {{ form.name(value=name)}}
+                        {%for error in form.name.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.age.label}} <br>
+                        {{form.age(value = age)}}
+                        {%for error in form.age.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.location.label}} <br>
+                        {{form.location(value = location)}}
+                        {%for error in form.location.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.education.label}} <br>
+                        {{form.education(value = education)}}
+                        {%for error in form.education.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.interests.label}} <br>
+                        {{form.interests}}
+                        {%for error in form.interests.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.skills.label}} <br>
+                        {{form.skills}}
+                        {%for error in form.skills.errors%}
+                            <spen class="error-message">{{error}}</spen>
+                        {%endfor%}
+                    </p>
+                    <p>
+                        {{form.submit()}}
+                    </p>
+                    <p>
+                        <a class="btn btn-primary"href="{{ url_for('index') }}">Cancel</a>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+ {% endblock %}
